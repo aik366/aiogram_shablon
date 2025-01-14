@@ -61,5 +61,6 @@ async def register_age(message: Message, state: FSMContext):
 async def register_number(message: Message, state: FSMContext):
     await state.update_data(number=message.contact.phone_number)
     data = await state.get_data()
-    await message.answer(f'Ваше имя: {data["name"]}\nВаш возраст: {data["age"]}\nНомер: {data["number"]}')
+    await message.answer(f'Ваше имя: {data["name"]}\nВаш возраст: {data["age"]}\nНомер: {data["number"]}',
+                         reply_markup=kb.main)
     await state.clear()
